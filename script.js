@@ -51,8 +51,8 @@ const loadStats = async () => {
     }
   }
 
-//make 3rd request to show current driver standings and display 
-  const res3 = await fetch("http://ergast.com/api/f1/current/driverStandings.json");
+//make 3rd request to show current driver standings and display
+  const res3 = await fetch("https://ergast.com/api/f1/current/driverStandings.json");
   const data3 = await res3.json();
   const driverStandings = data3.MRData.StandingsTable.StandingsLists[0].DriverStandings;
   const standingsTable = document.querySelector(".standings");
