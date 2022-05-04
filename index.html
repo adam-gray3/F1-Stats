@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+  <title>Forumla 1 Stats</title>
+</head>
+<body>
+  <h1><span>F1</span> Stats</h1>
+  <section class="container">
+    <div class="heading">
+      <h3>Select A Year To Show Calendar & Race Results</h3>
+      <select name="year" id="year" class="select"></select>
+    </div>
+    <div class="stats-card">
+      <table>
+        <thead>
+         <tr>
+           <th>Round</th>
+           <th>Race</th>
+           <th>Circuit</th>
+           <th>Date</th>
+           <th>Winner</th>
+         </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="drive-standings">
+      <h3 class="heading">Current Season Standings</h3>
+      <div class="stats-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Driver</th>
+              <th>Points</th>
+              <th>Wins</th>
+            </tr>
+          </thead>
+          <tbody class="standings">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>
