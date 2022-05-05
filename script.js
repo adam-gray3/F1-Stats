@@ -1,14 +1,18 @@
-const table = document.querySelector("tbody");
+const table = document.querySelector("table");
 const select = document.querySelector(".select");
 
-let currentYear = (new Date()).getFullYear();
 
+//setup date for select options from current year to 1950
+let currentYear = (new Date()).getFullYear();
 for(i = currentYear; i>=1950 && i<=currentYear; i--){
   let option = document.createElement("option");
   option.innerHTML = i;
   select.append(option);
 }
 
+
+
+//make api request
 const loadStats = async () => {
 
   const res = await fetch(`https://ergast.com/api/f1/${select.value}.json`);
@@ -50,11 +54,15 @@ const loadStats = async () => {
       newTr.append(raceWinner);
     }
   }
+};
 
-//make 3rd request to show current driver standings and display
-  const res3 = await fetch("https://ergast.com/api/f1/current/driverStandings.json");
-  const data3 = await res3.json();
-  const driverStandings = data3.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+
+//make request to show current driver standings and display
+const showStandings = async () => {
+
+  const res = await fetch("https://ergast.com/api/f1/current/driverStandings.json");
+  const data = await res.json();
+  const driverStandings = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
   const standingsTable = document.querySelector(".standings");
   driverStandings.forEach(driver => {
     const surName = driver.Driver.familyName;
@@ -79,7 +87,9 @@ const loadStats = async () => {
   })
 };
 
+
 window.addEventListener("load", loadStats);
+window.addEventListener("load", showStandings);
 select.addEventListener("change", loadStats);
 select.addEventListener("change", () => {
   table.innerText = "";

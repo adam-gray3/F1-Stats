@@ -42,14 +42,14 @@ select:focus{
 }
 
 .stats-card{
+  width: 100%;
   display: flex;
   justify-content: center;
-  padding: 1rem;
 }
 
 table{
-  width: 900px;
-  max-width: 80%;
+  width: 80%;
+  max-width: 900px;
   border-collapse: collapse;
   border: 1px solid red;
   color: #fff;
@@ -65,6 +65,15 @@ td{
 }
 
 .drive-standings{
-  background: ;
-  margin: 2rem;
+
+}
+
+@media(max-width: 767px){
+
+.heading{
+  flex-direction: column;
+}
+  table{
+    width: 90%;
+  }
 }
