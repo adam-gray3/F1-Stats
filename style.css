@@ -125,6 +125,7 @@ tr.hide{
   border: none;
   border-radius: 4px;
   padding: 1rem 3rem;
+  z-index: 1;
 }
 
 .show-more.active{
