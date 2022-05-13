@@ -6,6 +6,7 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const closeBtn = document.querySelector(".close");
 const latestTable = document.querySelector(".latest");
+const raceName = document.querySelector(".race-name");
 
 //setup date for select options from current year to 1950
 let currentYear = (new Date()).getFullYear();
@@ -57,6 +58,7 @@ const loadData = async() => {
        circuitName.innerText = circuit;
        const raceDate = document.createElement("td");
        raceDate.innerText = date;
+
       const winners = async () => {
         const winRes = await loadWinners(`https://ergast.com/api/f1/${select.value}/${round}/Results.json`);
         const completedRaces = winRes.MRData.RaceTable.Races[0];
@@ -68,7 +70,7 @@ const loadData = async() => {
           const secName = completedRaces.Results[0].Driver.familyName;
           raceWinner.innerText = `${firstName} ${secName}`;
         }
-        newTr.append(raceWinner)
+        newTr.append(raceWinner);
       }
 
         //APPEND THE NEW TABLE DATA VARAIBLES TO THE NEW TABLE ROW THEN APPEND TO THE TABLE
@@ -76,6 +78,7 @@ const loadData = async() => {
         table.append(newTr);
         winners();
     });
+
        //CALL FUNCTION TO SHOW MORE BUTTON
        showMore(table);
   };
@@ -138,6 +141,11 @@ const showStandings = async () => {
 const latestResults = async() => {
   const res4 = await fetch("https://ergast.com/api/f1/current/last/results.json");
   const data4 = await res4.json();
+
+  //show current race name in card
+  const currentRaceName = data4.MRData.RaceTable.Races[0].Circuit.circuitName;
+  raceName.innerText = currentRaceName;
+  //show latest race results
   const currentRaceResults = data4.MRData.RaceTable.Races[0].Results;
   currentRaceResults.map(driver => {
     const driverRow = document.createElement("tr");

@@ -263,6 +263,12 @@ tr.hide{
   pointer-events: auto;
 }
 
+.current-race-details{
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+
 
 @media(max-width: 1150px){
 .select-heading{
