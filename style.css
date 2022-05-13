@@ -125,11 +125,17 @@ tr.hide{
   border: none;
   border-radius: 4px;
   padding: 1rem 3rem;
-  z-index: 1;
+  transition: 1s ease;
+  background: #fff;
 }
 
 .show-more.active{
   display: block;
+}
+
+.show-more:hover{
+  background: red;
+  color: #fff;
 }
 
 .news-card{
@@ -302,4 +308,8 @@ tr.hide{
   .stats-card{
     font-size: 0.8em;
   }
+
+.modal{
+  font-size: 0.8rem;
+}
 }
