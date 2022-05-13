@@ -17,6 +17,7 @@ h1{
   font-size: 2.5rem;
   font-weight: 600;
   color: #fff;
+  margin: 1rem;
 }
 
 .heading{
@@ -24,15 +25,19 @@ h1{
   align-items: center;
   justify-content: center;
   color: #fff;
-  margin: 2rem 1rem;
 }
 
 .heading *{
-  margin: 0.5rem;
+  margin: 0.25rem;
 }
+
 
 span{
   color: red;
+}
+
+.select-heading{
+  text-align: center;
 }
 
 select{
@@ -41,6 +46,7 @@ select{
   font-size: 1rem;
   font-weight: 600;
   border-radius: 4px;
+  -webkit-apperance: none;
 }
 
 select:focus{
@@ -90,13 +96,13 @@ select:focus{
 .stats-card{
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .table{
   width: 100%;
   max-width: 1200px;
   border-collapse: collapse;
-  border: 1px solid red;
 }
 
 th{
@@ -258,6 +264,10 @@ tr.hide{
 }
 
 @media(max-width: 767px){
+.select-heading{
+  font-size: 0.8rem;
+}
+
 .container{
   grid-template-columns: 1fr;
 }
