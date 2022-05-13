@@ -263,7 +263,8 @@ tr.hide{
   pointer-events: auto;
 }
 
-@media(max-width: 767px){
+
+@media(max-width: 1150px){
 .select-heading{
   font-size: 0.8rem;
 }
