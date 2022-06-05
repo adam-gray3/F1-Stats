@@ -271,6 +271,8 @@ tr.hide{
 
 
 @media(max-width: 1150px){
+
+
 .select-heading{
   font-size: 0.8rem;
 }
@@ -320,6 +322,7 @@ tr.hide{
 
   .table{
     width: 100%;
+    text-align: center;
   }
 
   .stats-card{
