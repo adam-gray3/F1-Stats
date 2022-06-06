@@ -27,6 +27,15 @@ const loadData = async() => {
   }
 };
 
+const loadWinners = async(customUrl) => {
+  try{
+    const res2 = await fetch(customUrl);
+    const winners = await res2.json();
+    return winners;
+  } catch(e){
+      console.log("Error requesting driver wins", e)
+  }
+};
 
 //RUN FUNCTION FOR DATA AND BUILD TABLE
 const loadTable = async () => {
@@ -46,8 +55,23 @@ const loadTable = async () => {
      const raceDate = document.createElement("td");
      raceDate.innerText = race.date.split("-").reverse().join("-").replaceAll("-", "/");
 
-      newTr.append(roundNo, raceName, circuitName, raceDate);
-      table.append(newTr);
+
+     const winners = async () => {
+       const winRes = await loadWinners(`https://ergast.com/api/f1/${select.value}/${round}/Results.json`);
+       const completedRaces = winRes.MRData.RaceTable.Races[0];
+       const raceWinner = document.createElement("td");
+       if(completedRaces === undefined){
+         raceWinner.innerText = "TBC";
+       } else{
+         const firstName = completedRaces.Results[0].Driver.givenName;
+         const secName = completedRaces.Results[0].Driver.familyName;
+         raceWinner.innerText = `${firstName} ${secName}`;
+       }
+       newTr.append(roundNo, raceName, circuitName, raceDate, raceWinner);
+     }
+     
+     table.append(newTr);
+     winners()
     });
   //CALL FUNCTION TO SHOW MORE BUTTON
   showMore(table);
