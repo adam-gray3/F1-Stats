@@ -103,16 +103,20 @@ select:focus{
   width: 100%;
   max-width: 1200px;
   border-collapse: collapse;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
 }
 
 th{
   border: 1px solid red;
-  color: #fff;
+  color: #000;
 }
 
 td{
   border: 1px solid red;
-  color: #fff;
+  color: #000;
+  padding: 0.2rem;
 }
 
 tr.hide{

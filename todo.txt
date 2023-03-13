@@ -1,0 +1,11 @@
+
+
+Resize images for web in photoshop
+
+social links do not have discernable names 
+
+Break js up in to smaller section to make it more readable and re look at logic. 
+
+close modal when clicking otuside as well as when closed btn is clicked 
+
+change latest track description and link to vegas 

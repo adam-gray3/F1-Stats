@@ -1,12 +1,6 @@
 const table = document.querySelector("tbody");
 const select = document.querySelector(".select");
 const showBtn = document.querySelector(".show-more");
-const latestRace = document.querySelector(".current-results");
-const modal = document.querySelector(".modal");
-const overlay = document.querySelector(".overlay");
-const closeBtn = document.querySelector(".close");
-const latestTable = document.querySelector(".latest");
-const raceName = document.querySelector(".race-name");
 
 //setup date for select options from current year to 1950
 let currentYear = (new Date()).getFullYear();
@@ -69,9 +63,8 @@ const loadTable = async () => {
        }
        newTr.append(roundNo, raceName, circuitName, raceDate, raceWinner);
      }
-     
+     winners();
      table.append(newTr);
-     winners()
     });
   //CALL FUNCTION TO SHOW MORE BUTTON
   showMore(table);
@@ -129,55 +122,14 @@ const showStandings = async () => {
   })
 };
 
-//REQUEST LATEST RACE RESULTS
-const latestResults = async() => {
-  const res4 = await fetch("https://ergast.com/api/f1/current/last/results.json");
-  const data4 = await res4.json();
-  //show current race name in card
-  raceName.innerText = data4.MRData.RaceTable.Races[0].Circuit.circuitName;
-  //show latest race results
-  const currentRaceResults = data4.MRData.RaceTable.Races[0].Results;
-  currentRaceResults.map(driver => {
-    const driverRow = document.createElement("tr");
-
-    const driverName = document.createElement("td");
-    const driverPosition = document.createElement("td");
-    const driverPoints = document.createElement("td");
-    const driverTime = document.createElement("td");
-    //GET DRIVER NAME, NO, TIME & POINTS
-    driverName.innerText = driver.Driver.familyName
-    driverPosition.innerText = driver.position;
-    driverPoints.innerText = driver.points;
-
-    if(driver.Time === undefined){
-      driverTime.innerText = "DNF"
-    } else{
-      driverTime.innerText = driver.Time.time;
-    }
-    driverRow.append(driverPosition, driverName, driverTime, driverPoints);
-    latestTable.append(driverRow);
-  })
-};
-
-
-//OPEN MODAL
-function openModal() {
-  modal.classList.add("active");
-  overlay.classList.add("active");
-};
-
 //CALL EVENTS
 window.addEventListener("load", loadTable);
 window.addEventListener("load", showStandings);
-window.addEventListener("load", latestResults);
+
 select.addEventListener("change", loadTable);
+//CLEAR PREVIOUS DATA FROM TABLE 
 select.addEventListener("change", () => {
   table.innerText = "";
 });
 showBtn.addEventListener("click", showHidden);
-latestRace.addEventListener("click", openModal);
-//CLOSE MODAL
-closeBtn.addEventListener("click", () => {
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-});
+
